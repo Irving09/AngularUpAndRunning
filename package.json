@@ -1,0 +1,27 @@
+{
+  "name": "AngularUpAndRunning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "angular.js",
+  "dependencies": {
+    "jasmine-core": "^2.3.3",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.10",
+    "karma-jasmine": "^0.3.5",
+    "lodash": "^3.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Irving09/AngularUpAndRunning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Irving09/AngularUpAndRunning/issues"
+  },
+  "homepage": "https://github.com/Irving09/AngularUpAndRunning"
+}

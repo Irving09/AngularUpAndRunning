@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Bootstrap the angular application on the body tag -->
+<body ng-app>
+
+	<!-- the ng-model directive is used with input fields
+	whenever we want the user to enter any data and get access
+	to the value in JavaScript -->
+	<input type='text' ng-model='name' placeholder='Enter your name'>
+
+	<!-- ng-bind and the double curly notation are interchangeable -->
+	<h1>Hello  <span ng-bind='name'></span></h1>
+
+	<!-- Loading the AngularJS source code -->
+	<script type='text/javascript' src='../angular.min.js'></script>
+</body>
+</html>

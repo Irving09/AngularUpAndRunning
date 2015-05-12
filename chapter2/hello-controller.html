@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app='notesApp'>
+<head>
+	<title>Notes App</title>
+</head>
+
+
+<body ng-controller='MainCtrl as main'>
+	{{main.helloMsg}} AngularJS.
+	<br/>
+	{{main.goodbyeMsg}} AngularJS
+	<script type='text/javascript' src='../angular.min.js'></script>
+
+	<!-- it should be obvious that variables that were defined on the this keyword in the controller are accessible from the HTML, but local, inner variables are not. This is basically how we funnel and expose data from our controller and business logic to the UI.-->
+	<script type='text/javascript'>
+		var notesApp = angular.module('notesApp', []);
+		notesApp.controller('MainCtrl', [function() {
+			this.helloMsg = 'Hello ';
+			var goodbyeMsg = 'Goodbye';
+		}]);
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app='notesApp'>
+<head>
+	<title>Notes App</title>
+</head>
+<body ng-controller='MainCtrl as main'>
+
+	<!-- The ng-repeat is basically the same as a for each loop in any programming language, so the syntax is similar: -->
+	<div ng-repeat='note in main.notes'>
+		<span class='label'>{{note.label}}</span>
+
+		<!-- There is no functional difference between the curly brace notation {{}} and ng-bind notation; both take the value from the controller and display it in the UI. Both of them also keep it data-bound and up to date, so if the value underneath changes, the UI will change automatically. 
+
+		The advantage ng-bind has over the double-curly notation is that it takes AngularJS time to bootstrap and execute before it can find and replace all the double curly braces from the HTML. That means, for a portion of a second while the browser starts, you might see flash‐ ing double curly braces in the UI before AngularJS has the chance to kick in and replace them.-->
+		<span class='status' ng-bind='note.done'></span>
+	</div>
+
+	<script type='text/javascript' src='../angular.min.js'></script>
+	<script type='text/javascript'>
+		var notesApp = angular.module('notesApp', []);
+		notesApp.controller('MainCtrl', [function() {
+			var instance = this;
+			instance.notes = [
+				{ id: 1, label: 'First Note', done: false },
+				{ id: 2, label: 'Second Note', done: false },
+				{ id: 3, label: 'Done Note', done: true },
+				{ id: 4, label: 'Last Note', done: false }
+			];
+		}]);
+	</script>
+</body>
+</html>

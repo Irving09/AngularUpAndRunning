@@ -1,0 +1,38 @@
+
+
+MODULES - are AngularJS's way of packaging relevant code under a single name.
+
+	- Module can define its own controllers, services, factories, and directives. These are functions and code that can be accessed throughout the module
+
+	- Module can also depend on other modules as dependencies, which are defined when the module is instantiated. AngularJS will go and find the module with that particular name, and ensure that any functions, controllers, services etc. dfined in that module are made available to all the code defined in this module.
+
+	- The module is also what AngularJS uses to bootstrap an application.
+
+	- We can tell AngularJS what module to load as the main entry point for the application by passing the module name to the ng-app directive.
+
+		Defining a module (zero dependencies)
+			- angular.module('moduleName', []);
+
+		Defining a module (with dependencies)
+			- angular.module('moduleName', ['dependency1, dependency2']);
+
+		Load an existing module that has already been defined
+			- angular.module('moduleName');
+
+---------------------------------------------------------------------
+
+CONTROLLERS - are workhorses, the Javascript functions that perform or trigger the majority of the UI-oriented work.
+
+	- Fetching the right data from the server for the current UI
+
+	- Deciding which parts of the data to show to the user
+
+	- Presentation logic, such as how to display eleemtns, which parts of the UI to show, how to style them
+
+	- User interactions, such as what happens when a user clicks something or how a text input should be validated
+
+AngularJS controller is almost always directly linked to a view or HTML. It acts as the gateway between our model, which is the data that drives our application, and the view, which is what the user sees and interacts with
+
+**YOU WILL NEVER HAVE A CONTROLLER THAT IS NOT USED IN THE UI**
+
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app='notesApp'>
+<head>
+	<title>Hello AngularJS</title>
+</head>
+
+<!-- This is used to tell AngularJS to go instantiate an instance of the controller with the given name, and attach it to the DOM element.  -->
+<body ng-controller='MainCtrl'>
+	Hello {{1 + 1}}nd time AngularJS
+
+	<script type='text/javascript' src='../angular.min.js'></script>
+
+	<!-- The first argument to the controller function on the module is the name of the controller (MainCtrl), and the second argument is an array. The array holds all the dependencies for the controller as string variables, and the last argument in the array is the actual controller function. In this case, because we have no dependencies, the function is the only argument in the array. The function then houses all the controller-specific code. -->
+	<script type='text/javascript'>
+		var notesApp = angular.module('notesApp', []);
+		notesApp.controller('MainCtrl', [function() {
+			console.log('MainCtrl has been created');
+		}]);
+	</script>
+</body>
+</html>
