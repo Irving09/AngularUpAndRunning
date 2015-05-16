@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app='notesApp'>
+<body ng-controller='MainCtrl as main'>
+	<h1>Hello Controllers!</h1>
+	<button ng-click="main.open('first')">Open First</button>
+	<button ng-click="main.open('second')">Open Second</button>
+
+	<div ng-switch on='main.tab'>
+		<div ng-switch-when='first'>
+			<div ng-controller='SubCtrl as sub'>
+				<h3>First tab</h3>
+				<ul>
+					<!-- The html now binds the ng-repeat to the list() instead of the ctrl so it calls the function and uses its return value to display the array in the UI. -->
+					<li ng-repeat='item in sub.list()'>
+						<span ng-bind='item.label'></span>
+					</li>
+				</ul>
+
+				<button ng-click='sub.add()'>
+					Add more items
+				</button>
+			</div>
+		</div>
+
+		<div ng-switch-when='second'>
+			<div ng-controller='SubCtrl as sub'>
+				<h3>Second tab</h3>
+				<ul>
+					<li ng-repeat='item in sub.list2()'>
+						<span ng-bind='item.label'></span>
+					</li>
+				</ul>
+
+				<button ng-click='sub.add2()'>
+					Add more items
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<script type='text/javascript' src='../../angular.min.js'></script>
+	<script type='text/javascript' src='./app.js'></script>
+	<!-- <script type='text/javascript' src='../item-service-using-service/app.js'></script> -->
+	<!-- <script type='text/javascript' src='../item-service-using-provider/app.js'></script> -->
+</body>
+</html>

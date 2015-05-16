@@ -1,0 +1,86 @@
+------------------------------------------------------------------------
+
+AngularJS services are functions or objects that can hold behavior or state across our application.
+
+	- Each AngularJS service is instantiated only once, so each part of our application gets access to the same instance of the AngularJS service. 
+
+	- A service in AngularJS can be implemented as a factory, service, or provider.
+
+------------------------------------------------------------------------
+
+AngularJS controllers are great for tasks that relate to the following:
+
+	- Which model and data fields to fetch and show in the HTML
+
+	- User interaction, as in what needs to happen when a user clicks something
+
+	- Presentation logic, such as how a particular UI element should be styled, or whether it should be hidden
+
+
+Key behaviors from controllers in AngularJS
+
+	- Each controller has its own instance of the this keyword
+
+	- When we use controllers, the instances of those controllers gets created and destroyed as you navigate throughout the application. This is true hwen you are working on routing and multiple URLs in a SPA
+
+	- One controller cannot directly communicate with another controller to share state or behavior
+
+------------------------------------------------------------------------
+
+Services Vs. Controllers
+
+CONTROLLERS                                   SERVICES
+
+Presentation logic							  Business Logic
+Directly linked to a view					  Independent Views
+Drives the UI								  Drives the application
+One-off, specific							  Reusable
+
+------------------------------------------------------------------------
+
+Dependency Injection in AngularJS
+
+NOTE:
+Any service known to AngularJS can be simply injected into any other service, directive, or controller by stating it as a dependency.
+
+Dependency injection allows us to:
+
+	- Change the underlying implemention of a dependency without manually changing each dependent function
+
+	- Change the underlying implementation just for the test, to prevent it from making server calls
+
+	- Explicitly state what needs to be included and present before this function or con‐ structor can execute
+
+-----------------------------------------------------------------------
+
+Creating a simple AngularJS Service should fall into one of the following broad criteria
+
+	- It needs to be reusable: More than one controller or service will need to access the particular function that is being implemented
+
+	- Application-level state: Controllers get created and destroyed. If we need state stored across our application, it belongs in a service.
+
+	- It is independent of the view: If what we are implementing is not directly linked to a view, it probably belongs in a service.
+
+	- Integrates with a third-party service: We need to integrate a third-party service (think SocketIO, BreezeJS, etc.), but we want to be able to mock or replace it in our unit tests. A service makes that easy.
+
+	- Caching/factories: Do we need an object cache? Or something that creates model objects? Services are our best bet.
+
+
+-----------------------------------------------------------------------
+
+CREATING A SERVICE
+
+	- Use the angular.module().factory function to declare the service’s name and dependencies.
+
+	- Return an object, or a function from within the service definition, which becomes the public API for our service.
+
+	- Hold internal state as local variables inside the service. This is important because in a Single Page Application where controllers can get created and destroyed, the service can act as an application-level store.
+
+	- The service will be lazily instantiated. The very first time a controller, service, or directive asks for the service, it will be created.
+
+	- The service definition function will be called once, and the instance stored. Every caller of this service will get this same, singleton instance handed to them.
+
+Note: In a Single Page Application, the HTML and controllers can get destroyed and created multiple times in an application.
+
+-----------------------------------------------------------------------
+

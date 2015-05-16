@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app='notesApp'>
+<head>
+	<title></title>
+</head>
+
+<body ng-controller='MainCtrl as main'>
+	<form ng-submit='main.submit1()'>
+		<input type="text" ng-model="main.username">
+		<input type="password" ng-model="main.password">
+		<input type="submit" value="Submit">
+	</form>
+
+
+	<!-- The second flow makes more sense, because we are directly modeling how we want to represent the form as an object in the controller. This removes any additional work we might have to do when we work with the values of the form. -->
+	<form ng-submit="main.submit2()">
+		<input type="text" ng-model="main.user.username">
+		<input type="password" ng-model="main.user.password">
+		<input type="submit" value="Submit">
+	</form>
+
+
+	<script type='text/javascript' src='../angular.min.js'></script>
+	<script type='text/javascript'>
+	var notesApp = angular.module('notesApp', []);
+	notesApp.controller('MainCtrl', [function() {
+		var self = this;
+		self.submit1 = function() {
+			var user = { username: self.username, password: self.password };
+			console.log('First form submit with ', user);
+		};
+
+		// The second flow makes more sense, because we are directly modeling how we want to represent the form as an object in the controller. This removes any additional work we might have to do when we work with the values of the form.
+		self.submit2 = function() {
+			console.log('Second form submit with ', self.user);
+		};
+	}]);
+	</script>
+</body>
+</html>

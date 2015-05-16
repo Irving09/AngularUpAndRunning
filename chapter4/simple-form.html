@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app='notesApp'>
+<head>
+	<title></title>
+</head>
+<body ng-controller='MainCtrl as main'>
+
+
+	<!-- The ng-submit has a few advantages over having an ng-click directive on a button when it comes to forms
+
+	A form ng-submit event can be triggered in multiple ways:
+		- clicking the submit button
+		- hitting enter on the text field
+	 -->
+	<form ng-submit="main.submit()">
+
+	<!--
+	intstead of binding to ctrl.username and ctrl.password, we bind to ctrl.user.username and ctrl.user.password
+
+	Notice that we did not declare a user object in the controller (that is, self.user = {}). When you use ng-model, AngularJS automatically creates the objects and keys necessary in the chain to in‐ stantiate a data-binding connection 
+
+	until the user types something into the username or password field, there is no user object.-->
+	<input type="text" ng-model="main.user.username">
+	<input type="password" ng-model="main.user.password">
+	<input type="submit" value="Submit">
+	</form>
+
+
+
+	<script type='text/javascript' src='../angular.min.js'></script>
+	<script type='text/javascript'>
+	var notesApp = angular.module('notesApp', []);
+	notesApp.controller('MainCtrl', [function() {
+		var self = this;
+		self.submit = function() {
+			console.log('User clicked submit with ', self.user);
+		};
+	}]);
+	</script>
+</body>
+</html>

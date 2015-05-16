@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app='notesApp'>
+	<head>
+	<script src="../../angular.min.js"></script>
+	<script src="app.js"></script>
+</head>
+
+<body ng-controller='MainCtrl as mainCtrl'>
+	<h1>Hello Controllers!</h1>
+	<button ng-click="mainCtrl.open('first')">Open First</button>
+	<button ng-click="mainCtrl.open('second')">Open Second</button>
+
+
+	<!-- ng-switch acts like a switch statement in the HTML. It takes a variable (using the on attribute, which in this case is MainCtrl’s tab), and then, depending on the state, hides and shows elements (using the ng-switch-when attribute, used as children of the ng-switch). -->
+	<div ng-switch on="mainCtrl.tab"> <!-- switch(mainCtrl.tab)-->
+		<div ng-switch-when="first"> <!-- case 'first':-->
+			<!-- do something -->
+			<div ng-controller="SubCtrl as ctrl">
+				<h3>First tab</h3>
+				<ul>
+					<li ng-repeat="item in ctrl.list">
+						<span ng-bind="item.label"></span>
+					</li>
+				</ul>
+				<button ng-click="ctrl.add()">Add More Items</button>
+			</div>
+
+		</div>
+		<div ng-switch-when="second"> <!-- case 'second':-->
+			<!-- do something -->
+			<div ng-controller="SubCtrl as ctrl">
+				<h3>Second tab</h3>
+				<ul>
+					<li ng-repeat="item in ctrl.list">
+						<span ng-bind="item.label"></span>
+					</li>
+				</ul>
+				<button ng-click="ctrl.add()">Add More Items</button>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

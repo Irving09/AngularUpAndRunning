@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app='notesApp'>
+
+
+<body ng-controller='MainCtrl as main'>
+	<h1>Hello Services!</h1>
+	<button ng-click='main.logStuff()'>Log something</button>
+
+
+
+
+	<script type='text/javascript' src='../angular.min.js'></script>
+	<script type='text/javascript'>
+	var notesApp = angular.module('notesApp', []);
+
+	// safe style of Dependency Injection
+	//Just be careful to keep the strings and the variables in sync and in the same order, or expect some craziness with your code.
+	notesApp.controller('MainCtrl', ['$log', function($log) {
+		var self = this;
+		self.logStuff = function() {
+			$log.log('The button was pressed');
+		};
+	}]);
+	</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app='notesApp'>
+<head>
+	<title>Notes App</title>
+</head>
+<body ng-controller='MainCtrl as main'>
+	<input type='text' ng-model='main.username'>
+	<input type='password' ng-model='main.password'>
+	<button ng-click='main.change()'>Change Values</button>
+	<button ng-click='main.submit()'>Submit</button>
+
+
+	<script type='text/javascript' src='../angular.min.js'></script>
+	<script type='text/javascript'>
+	var notesApp = angular.module('notesApp', []);
+	notesApp.controller('MainCtrl', [function() {
+		var self = this;
+		self.change = function() {
+			self.username = 'changed';
+			self.password = 'password';
+		};
+
+		self.submit = function() {
+			console.log('User clicked submit with ', self.username, self.password);
+		};
+	}]);
+	</script>
+</body>
+</html>
